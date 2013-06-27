@@ -123,4 +123,18 @@ describe "AuthenticationPages" do
     end
   end
 
+  describe "as admin user" do
+
+    describe "should not be able to delete themselves" do
+      let(:admin) { FactoryGirl.create(:admin)}
+
+      before { sign_in admin }
+
+      it { expect { delete user_path(admin) }.not_to change(User, :count) }
+
+    end
+
+
+  end
+
 end
